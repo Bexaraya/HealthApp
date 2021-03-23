@@ -13,9 +13,16 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
+    // Route module
     AppRoutingModule,
+    // Para las template-driven forms
     FormsModule,
+    // Para las reactive forms
     ReactiveFormsModule
+    // Material
+    /*BrowserAnimationModule, MaterialModule*/
+    // Flex
+    // FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
