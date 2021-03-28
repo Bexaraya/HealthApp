@@ -1,0 +1,54 @@
+<div class="{{alertStyle}}" role="alert" *ngIf="signupStatus.code != ''">
+    {{signupStatus.message}}
+</div>
+<div *ngIf="signupStatus.code === '' || signupStatus.code === 'USER_LOGIN_UNSUCCESSFUL'">
+    <h2>Login Usuarios</h2>
+    <hr/>
+    <form class="form-horizontal" (ngSubmit)="onLogin()" #loginForm="ngForm" novalidate>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-6">
+                <input type="email"
+                       class="form-control"
+                       id="email"
+                       placeholder="Email"
+                       required
+                       [(ngModel)]="model.email"
+                       name="email"
+                       #email="ngModel"
+                >
+                <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                    El email es requerido
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Contraseña</label>
+            <div class="col-sm-6">
+                <input type="password"
+                       class="form-control"
+                       id="password"
+                       placeholder="Contraseña"
+                       required
+                       [(ngModel)]="model.password"
+                       name="password"
+                       #password="ngModel"
+                >
+                <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+                    La contraseña es requerida
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-success" [disabled]="!loginForm.form.valid">Enviar</button>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <span><a routerLink="/auth/register" routerLinkActive="active">Nuevo usuario? Regístrate</a></span>
+                <span><a href="/auth/forgotpassword" routerLinkActive="active">Olvidaste tu contraseña?</a></span>
+            </div>
+        </div>
+    </form>
+</div>
